@@ -1,116 +1,95 @@
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { useState } from "react"
+import { api } from "../api"
+import { Button } from "../components/Button"
+import { Inputs } from "../components/Inputs"
+
+export type ValidateInputForm = z.infer<typeof validateInputFormSchema>
+
+const validateInputFormSchema = z.object({
+    companyName: z.string()
+        .nonempty('O campo de senha é obrigatório!')
+        .min(6, 'A senha precisa de no mínimo 6 caracteres.'),
+    cep: z.string()
+        .nonempty('O campo de cep é obrigatório!'),
+    address: z.string()
+        .nonempty('O campo de endereço é obrigatório!'),
+    email: z.string()
+        .nonempty('O campo de e-mail é obrigatório!')
+        .email('Formato de e-mail inválido!'),
+    phone: z.string()
+        .nonempty('O campo de telefone é obrigatório!'),
+    contact: z.string()
+        .nonempty('O campo de contato é obrigatório!'),
+    message: z.string()
+})
+
 export function Form() {
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
+
+    const {
+        handleSubmit,
+        register,
+        watch,
+        formState: { errors },
+    } = useForm<ValidateInputForm>({
+        resolver: zodResolver(validateInputFormSchema)
+    })
+
+    async function sendData() {
+        setLoading(true)
+
+        const formData = {
+            companyName: watch('companyName'),
+            cep: watch('cep'),
+            address: watch('address'),
+            email: watch('email'),
+            phone: watch('phone'),
+            contact: watch('contact'),
+            message: watch('message')
+        };
+
+        api.post("api/leads", formData)
+            .then((response) => {
+                console.log(response.data);
+            })
+            .catch((error) => {
+                setError(error);
+                console.error(error);
+            })
+            .finally(() => {
+                setLoading(false)
+            });
+    };
+
     return (
         <div className="flex items-center justify-center p-12">
             <div className="mx-auto w-full max-w-[550px]">
-                <form action="https://formbold.com/s/FORM_ID" method="POST">
-                    <div className="mb-5">
-                        <label
-                            htmlFor="company-name"
-                            className="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Nome da empresa
-                        </label>
-                        <input
-                            type="text"
-                            name="company-name"
-                            required
-                            maxLength={100}
-                            placeholder="Nome completo da empresa"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
+                <form onSubmit={handleSubmit(sendData)}>
+                    <Inputs
+                        register={register}
+                        errors={errors}
+                    />
 
-                    <div className="mb-5">
-                        <label
-                            htmlFor="cep"
-                            className="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Cep
-                        </label>
-                        <input
-                            type="text"
-                            name="cep"
-                            required
-                            placeholder="Código postal do endereço"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label
-                            htmlFor="address"
-                            className="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Endereço
-                        </label>
-                        <input
-                            type="text"
-                            name="address"
-                            required
-                            placeholder="Avenida Paulista"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label
-                            htmlFor="phone"
-                            className="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Telefone
-                        </label>
-                        <input
-                            type="text"
-                            name="phone"
-                            required
-                            placeholder="Enter your subject"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label
-                            htmlFor="contact"
-                            className="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Contato
-                        </label>
-                        <input
-                            type="text"
-                            name="contact"
-                            required
-                            placeholder="Enter your subject"
-                            className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                        />
-                    </div>
-
-                    <div className="mb-5">
-                        <label
-                            htmlFor="message"
-                            className="mb-3 block text-base font-medium text-[#07074D]"
-                        >
-                            Mensagem ( opicional )
-                        </label>
-                        <textarea
-                            rows={4}
-                            name="message"
-                            required
-                            maxLength={150}
-                            placeholder="Digite uma mensagem para empresa"
-                            className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
-                            defaultValue={""}
-                        />
-                    </div>
+                    {error && (
+                        <div className="flex flex-col pt-2 pl-3">
+                            <p className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+                                {error.message}
+                            </p>
+                        </div>
+                    )}
 
                     <div>
-                        <button
-                            className="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
-                        >
-                            Enviar para comercial
-                        </button>
+                        <Button
+                            loading={loading}
+                        />
                     </div>
                 </form>
             </div>
-        </div>
+        </div >
     )
 }

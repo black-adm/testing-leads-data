@@ -1,8 +1,9 @@
 export interface Lead {
-  companyName: string;
-  address: string;
-  email: string;
-  phone: string;
-  contact: string;
-  message?: string;
+    companyName: string
+    cep: string
+    address: string
+    email: string
+    phone: string
+    contact: string
+    message?: string
 }
