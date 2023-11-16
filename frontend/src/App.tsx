@@ -1,11 +1,8 @@
-import { Table } from "./components/Table"
+import { RouterApp } from "./routes/RouterApp"
 
 export function App() {
-
   return (
-    <div className="w-full h-screen mx-auto">
-      <Table />
-    </div>
+    <RouterApp />
   )
 }
 
