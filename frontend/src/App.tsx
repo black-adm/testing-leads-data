@@ -1,10 +1,10 @@
-import { Home } from "./pages/Home"
+import { Table } from "./components/Table"
 
 export function App() {
 
   return (
     <div className="w-full h-screen mx-auto">
-      <Home />
+      <Table />
     </div>
   )
 }
