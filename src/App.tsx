@@ -1,9 +1,11 @@
+import { Form } from "./pages/Form"
+
 export function App() {
 
   return (
-    <>
-      <h1 className="text-4xl">ola</h1>
-    </>
+    <div className="w-full h-screen mx-auto">
+      <Form />
+    </div>
   )
 }
 
