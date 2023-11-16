@@ -22,4 +22,10 @@ export async function leadsRoutes(app: FastifyInstance) {
         .send({ sucess: false, message: 'Erro ao processar o lead' })
     }
   })
+
+  app.get('/', async () => {
+    const list = await prisma.lead.findMany()
+
+    return list
+  })
 }
