@@ -5,6 +5,7 @@ import { useState } from "react"
 import { api } from "../api"
 import { Button } from "../components/Button"
 import { Inputs } from "../components/Inputs"
+import { useNavigate } from "react-router-dom"
 
 export type ValidateInputForm = z.infer<typeof validateInputFormSchema>
 
@@ -29,6 +30,7 @@ const validateInputFormSchema = z.object({
 export function Form() {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const navigate = useNavigate()
 
     const {
         handleSubmit,
@@ -52,9 +54,10 @@ export function Form() {
             message: watch('message')
         };
 
-        api.post("/leads", formData)
+        api.post("leads", formData)
             .then((response) => {
                 console.log(response.data);
+                navigate("/admin")
             })
             .catch((error) => {
                 setError(error);

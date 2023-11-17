@@ -37,21 +37,18 @@ export function Login() {
             role: watch('role')
         };
 
-        try {
-            const response = await api.post('leads/user', formData);
-
-            if (response.data.success) {
-                navigate('/leads');
-            }
-            setError(response.data.message);
-        }
-        catch {
-            setError(error);
-            console.error(error);
-        }
-        finally {
-            setLoading(false)
-        };
+        api.post("leads/user", formData)
+            .then((response) => {
+                console.log(response.data);
+                navigate("/leads")
+            })
+            .catch((error) => {
+                setError(error);
+                console.error(error);
+            })
+            .finally(() => {
+                setLoading(false)
+            });
     };
 
     return (
