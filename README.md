@@ -1,9 +1,12 @@
 ## Testando o projeto
 
-Acesse a pasta `backend` e na raiz do projeto digite `npm install`, com as dependências instaladas digite `npx prisma migrate dev` para rodar as migrations do banco.
+Primeiro, vamos configurar o banco de dados na sua máquina. Estou utilizando o **postgresql** em um container docker.
+
+Para criar um container com as credenciais necessárias do projeto, digite o comando `docker run --name leads -e POSTGRES_PASSWORD=admin -d -p 5432:5432 postgres`, verifique se o container está rodando com o comando `docker ps -a`.
 <br>
 
-Estou utilizando o **postgresql** como banco de dados em um container docker. Para criar um container com as credenciais necessárias para o projeto, digite o comando `docker run --name leads -e POSTGRES_PASSWORD=admin -d -p 5432:5432 postgres`, verifique se o container está rodando com o comando `docker ps -a`.
+Acesse a pasta `backend` e na raiz do projeto digite `npm install`, com as dependências instaladas digite `npx prisma migrate dev --create-only` para rodar as migrations do banco, de um nome para a migration.
+<br>
 
 Após todas as etapas acima estar devidamente configuradas, digite na raiz do projeto `backend` o comando `npm run dev`. A api vai rodar na porta **3333**.
 <br>
