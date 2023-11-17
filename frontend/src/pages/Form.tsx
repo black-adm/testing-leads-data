@@ -16,7 +16,7 @@ const validateInputFormSchema = z.object({
         .nonempty('O campo de cep é obrigatório!'),
     address: z.string()
         .nonempty('O campo de endereço é obrigatório!'),
-    email: z.string()
+    email: z.string().email()
         .nonempty('O campo de e-mail é obrigatório!')
         .email('Formato de e-mail inválido!'),
     phone: z.string()
@@ -52,7 +52,7 @@ export function Form() {
             message: watch('message')
         };
 
-        api.post("api/leads", formData)
+        api.post("/leads", formData)
             .then((response) => {
                 console.log(response.data);
             })
