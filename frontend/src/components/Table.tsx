@@ -1,43 +1,12 @@
-import { useEffect, useState } from "react";
-import { Lead } from "../types/lead";
+import { useData } from "../hooks/useData";
 
 export function Table() {
-    const [lead, setLead] = useState<Lead>();
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string>();
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch('http://localhost:3333/leads');
-                const result = await response.json();
-                if (result.success) {
-                    setLead(result.data);
-                } else {
-                    setError(result.message);
-                }
-            } catch (error) {
-                setError('Error fetching data');
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    if (loading) {
-        return <p>Loading...</p>;
-    }
-
-    if (error) {
-        return <p>Error: {error}</p>;
-    }
+    const { leads } = useData();
 
     return (
         <>
-            {lead && (
-                <table className="border-collapse w-full">
+            {leads.map((lead) => (
+                <table className="border-collapse w-full" key={lead.id}>
                     <thead>
                         <tr>
                             <th className="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell">
@@ -110,17 +79,17 @@ export function Table() {
                             </td>
                             <td className="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
                                 <span className="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                                    Status
+                                    Call Status
                                 </span>
 
                                 <span className="rounded bg-yellow-400 py-1 px-3 text-xs font-bold">
-                                    Sem resposta
+                                    {lead.status !== null ? lead.status : "Sem retorno"}
                                 </span>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            )}
+            ))}
         </>
     );
 }
