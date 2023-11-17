@@ -1,7 +1,7 @@
 export interface Lead {
   companyName: string
   cep: string
-  addres: string
+  address: string
   email: string
   phone: string
   contact: string
