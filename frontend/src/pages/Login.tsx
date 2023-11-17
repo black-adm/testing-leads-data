@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { api } from "../api"
-import { LoginInputs } from "../components/LoginInputs";
+import { LoginInputs } from "../components/Login/LoginInputs";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";

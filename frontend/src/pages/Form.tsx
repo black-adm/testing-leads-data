@@ -3,8 +3,8 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import { useState } from "react"
 import { api } from "../api"
-import { Button } from "../components/Button"
-import { Inputs } from "../components/Inputs"
+import { Button } from "../components/Form/Button"
+import { Inputs } from "../components/Form/Inputs"
 import { useNavigate } from "react-router-dom"
 
 export type ValidateInputForm = z.infer<typeof validateInputFormSchema>
