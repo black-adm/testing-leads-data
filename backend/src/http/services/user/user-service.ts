@@ -1,6 +1,7 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
+import { FastifyRequest, FastifyReply } from 'fastify'
 import { prisma } from '../../../database/client'
 import { User } from '../../../entities/user'
+import { hashPasswordService } from './hash-password-service'
 
 export async function createUserService(
   request: FastifyRequest,
@@ -9,7 +10,7 @@ export async function createUserService(
   try {
     const user: User = request.body as User
 
-    if (!user.email || !user.role) {
+    if (!user) {
       reply.code(400).send({
         success: false,
         message: 'Dados de usuário incompletos',
@@ -17,8 +18,13 @@ export async function createUserService(
       return
     }
 
+    const hashedPassword = await hashPasswordService(user.password)
+
     const create = await prisma.user.create({
-      data: user,
+      data: {
+        ...user,
+        password: hashedPassword,
+      },
     })
 
     reply.code(201).send({

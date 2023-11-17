@@ -1,5 +1,6 @@
 import fastify from 'fastify'
 import cors from '@fastify/cors'
+import fastifyBcrypt from 'fastify-bcrypt'
 
 import { leadsRoutes } from './http/routes/leads'
 import { usersRoutes } from './http/routes/users'
@@ -19,3 +20,5 @@ app.register(leadsRoutes, {
 app.register(usersRoutes, {
   prefix: 'user',
 })
+
+app.register(fastifyBcrypt)
