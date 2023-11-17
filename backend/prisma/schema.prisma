@@ -8,18 +8,23 @@ datasource db {
 }
 
 model User {
-  id          Int      @id @default(autoincrement())
-  email String @unique
-  role Type
+  id        String   @id @default(uuid())
+  firstName String
+  lastName  String
+  email     String   @unique
+  password  String
+  role      Team
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
-enum Type {
+enum Team {
   comercial
   prospect
 }
 
 model Lead {
-  id          Int      @id @default(autoincrement())
+  id          String   @id @default(uuid())
   companyName String   @unique
   cep         String
   address     String
@@ -27,5 +32,13 @@ model Lead {
   phone       String
   contact     String
   message     String?
-  status      Boolean?
+  status      Status?   @default(waiting)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+enum Status {
+  reject
+  accepted
+  waiting
 }

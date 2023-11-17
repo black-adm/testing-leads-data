@@ -1,4 +1,7 @@
 node_modules
+/prisma/migrations
+
 .eslintrc.json
+
 .env
 .env.local
