@@ -10,7 +10,7 @@ Após todas as etapas acima estar devidamente configuradas, digite na raiz do pr
 
 Com a api rodando, abra outro terminal e acesse a pasta `frontend`, digite `npm install` para  baixar as dependências. Se tudo estiver devidamente instalado, acesse a raiz do projeto `frontend` e digite `npm run dev`. 
 
-As rotas do frontend são **/admin** para visualizar as tabelas, **/leads** para o formulário de criação de leads e a rota **/** para acessar a tela de criação do usuário, se ele é do time comercial ou do time de prospecção.
+As rotas do frontend são **/leads** para visualizar as tabelas, **/cadastrar** para o formulário de criação de leads e a rota raiz **/** é para acessar a tela de criação do usuário e login, se ele é do time comercial ou do time de prospecção.
 <br>
 
 O backend está finalizado e funcionando totalmente, as rotas são :
