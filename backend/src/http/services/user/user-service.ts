@@ -2,10 +2,14 @@ import { FastifyRequest, FastifyReply } from 'fastify'
 import { prisma } from '../../../database/client'
 import { User } from '../../../entities/user'
 import { hashPassword } from './hash-password-service'
+import { app } from '../../../app'
 
 export async function createUser(request: FastifyRequest, reply: FastifyReply) {
   try {
     const user: User = request.body as User
+    const token = app.jwt.sign({
+      user,
+    })
 
     if (!user) {
       reply.code(400).send({
@@ -27,7 +31,7 @@ export async function createUser(request: FastifyRequest, reply: FastifyReply) {
     reply.code(201).send({
       sucess: true,
       message: 'Usuário criado com sucesso!',
-      data: create,
+      data: { create, token },
     })
   } catch (error) {
     console.error('Erro ao criar usuário:', error)
