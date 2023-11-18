@@ -1,8 +1,9 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { prisma } from '../../../database/client'
 import { User } from '../../../entities/user'
-import { hashPassword } from './hash-password-service'
+import { confirmPassword, hashPassword } from './hash-password-service'
 import { app } from '../../../app'
+import { getTokenService } from './get-token-service'
 
 export async function createUser(request: FastifyRequest, reply: FastifyReply) {
   try {
@@ -56,20 +57,37 @@ export async function authUser(request: FastifyRequest, reply: FastifyReply) {
   const { email, password }: User = request.body as User
 
   try {
-    const auth = await prisma.user.findFirst({
+    const user = await prisma.user.findFirst({
       where: {
         email,
-        password,
       },
     })
 
+    if (!user) {
+      reply.code(404).send({
+        message: 'Usuário não existe no sistema!',
+      })
+      return
+    }
+
+    const validatePassword = await confirmPassword(password, user.password)
+
+    if (!validatePassword) {
+      reply.code(500).send({
+        message: 'Senha inválida!',
+      })
+      return
+    }
+
+    const token = await getTokenService
+
     reply.code(200).send({
-      sucess: true,
+      success: true,
+      data: token,
     })
-    return auth
   } catch (error) {
     reply.code(403).send({
-      sucess: false,
+      success: false,
       message: 'Usuário ou dados de acesso inválido!',
     })
   }
