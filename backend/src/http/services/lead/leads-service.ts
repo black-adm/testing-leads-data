@@ -73,8 +73,33 @@ export async function editLead(
     })
   } catch (error) {
     console.error('Erro ao atualizar o lead:', error)
-    reply
-      .code(500)
-      .send({ success: false, message: 'Erro ao atualizar o lead' })
+    reply.code(500).send({
+      success: false,
+      message: 'Erro ao atualizar o lead, verifique os dados inseridos!',
+    })
   }
+}
+
+export async function deleteLead(
+  request: FastifyRequest<{ Params: { id: string } }>,
+  reply: FastifyReply,
+) {
+  const { id } = request.params
+
+  const deleteById = await prisma.lead.delete({
+    where: { id },
+  })
+
+  if (!deleteLead && id === null) {
+    reply.code(500).send({
+      sucess: false,
+      message: 'Erro ao tentar deletar lead, tente novamente!',
+    })
+  }
+
+  reply.code(202).send({
+    success: true,
+    message: 'Lead deletado do sistema!',
+  })
+  return deleteById
 }
