@@ -1,12 +1,9 @@
 import { FastifyRequest, FastifyReply } from 'fastify'
 import { prisma } from '../../../database/client'
 import { User } from '../../../entities/user'
-import { hashPasswordService } from './hash-password-service'
+import { hashPassword } from './hash-password-service'
 
-export async function createUserService(
-  request: FastifyRequest,
-  reply: FastifyReply,
-) {
+export async function createUser(request: FastifyRequest, reply: FastifyReply) {
   try {
     const user: User = request.body as User
 
@@ -18,7 +15,7 @@ export async function createUserService(
       return
     }
 
-    const hashedPassword = await hashPasswordService(user.password)
+    const hashedPassword = await hashPassword(user.password)
 
     const create = await prisma.user.create({
       data: {
@@ -41,10 +38,7 @@ export async function createUserService(
   }
 }
 
-export async function authUserService(
-  request: FastifyRequest,
-  reply: FastifyReply,
-) {
+export async function authUser(request: FastifyRequest, reply: FastifyReply) {
   const { email, password }: User = request.body as User
 
   try {

@@ -1,10 +1,7 @@
 import { FastifyInstance } from 'fastify'
-import {
-  authUserService,
-  createUserService,
-} from '../services/user/user-service'
+import { authUser, createUser } from '../services/user/user-service'
 
 export async function usersRoutes(app: FastifyInstance) {
-  app.post('/register', createUserService)
-  app.post('/login', authUserService)
+  app.post('/register', createUser)
+  app.post('/login', authUser)
 }

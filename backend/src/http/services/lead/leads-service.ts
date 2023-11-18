@@ -2,10 +2,7 @@ import { Lead } from '../../../entities/lead'
 import { prisma } from '../../../database/client'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
-export async function createLeadService(
-  request: FastifyRequest,
-  reply: FastifyReply,
-) {
+export async function createLead(request: FastifyRequest, reply: FastifyReply) {
   try {
     const lead: Lead = request.body as Lead
     const create = await prisma.lead.create({
@@ -25,7 +22,32 @@ export async function createLeadService(
   }
 }
 
-export async function getAllLeadsService() {
+export async function getAllLeads() {
   const listLeads = await prisma.lead.findMany()
   return listLeads
+}
+
+export async function getLeadById(
+  request: FastifyRequest<{ Params: { id: string } }>,
+  reply: FastifyReply,
+) {
+  const { id } = request.params
+  const getLead = await prisma.lead.findUnique({
+    where: {
+      id,
+    },
+  })
+
+  if (!getLead) {
+    reply.status(404).send({
+      sucess: false,
+      message: 'Esse lead não existe no sistema!',
+    })
+  }
+
+  reply.send({
+    success: true,
+    message: 'Lead encontrado com sucesso!',
+    data: getLead,
+  })
 }
