@@ -20,6 +20,16 @@ export async function createUser(request: FastifyRequest, reply: FastifyReply) {
     }
 
     const hashedPassword = await hashPassword(user.password)
+    const existsUser = await prisma.user.findUnique({
+      where: { email: user.email },
+    })
+
+    if (existsUser) {
+      reply.code(409).send({
+        message: 'Este email já possui cadastro no sistema!',
+      })
+      return
+    }
 
     const create = await prisma.user.create({
       data: {
