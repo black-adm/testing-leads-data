@@ -38,16 +38,43 @@ export async function getLeadById(
     },
   })
 
-  if (!getLead) {
+  if (!getLead && getLead == null) {
     reply.status(404).send({
       sucess: false,
       message: 'Esse lead não existe no sistema!',
     })
   }
 
-  reply.send({
+  reply.status(200).send({
     success: true,
     message: 'Lead encontrado com sucesso!',
     data: getLead,
   })
+}
+
+export async function editLead(
+  request: FastifyRequest<{ Params: { id: string } }>,
+  reply: FastifyReply,
+) {
+  const { id } = request.params
+
+  try {
+    const lead: Lead = request.body as Lead
+
+    const edit = await prisma.lead.update({
+      where: { id },
+      data: lead,
+    })
+
+    reply.code(200).send({
+      success: true,
+      message: 'Lead atualizado com sucesso!',
+      data: edit,
+    })
+  } catch (error) {
+    console.error('Erro ao atualizar o lead:', error)
+    reply
+      .code(500)
+      .send({ success: false, message: 'Erro ao atualizar o lead' })
+  }
 }
