@@ -1,6 +1,14 @@
+import { jwtDecode } from "jwt-decode";
 import { UserCircle } from "lucide-react";
 
 export function UserSection() {
+    const token = localStorage.getItem('token')
+
+    if(!token) throw new Error('Token not found as user!')
+
+    const decoded = jwtDecode(token)
+    console.log(decoded)
+
     return (
         <div className="mb-8 flex justify-center">
             <div className="flex items-center w-80 sm:w-96 justify-between rounded-full px-4 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-500">
@@ -8,7 +16,6 @@ export function UserSection() {
                     <UserCircle
                         className="inline-flex h-4 w-4 mr-2"
                     />
-                    Matheus Roberto
                 </div>
 
                 <div className="flex items-center font-semibold text-gray-600">

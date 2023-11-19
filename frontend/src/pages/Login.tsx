@@ -44,8 +44,9 @@ export function Login() {
         };
 
         api.post("/user/login", formData)
-            .then((response) => {
-                console.log(response.data)
+            .then(response => {
+                const token = response.data.token;
+                localStorage.setItem('token', token);
                 navigate("/leads")
             })
             .catch((error) => {
