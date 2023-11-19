@@ -2,12 +2,12 @@ import { UseFormRegister } from 'react-hook-form';
 import { ValidateHomeForm } from '../../pages/Register';
 import { BadgeInfo } from 'lucide-react';
 
-interface LoginProps {
+interface RegisterProps {
     register: UseFormRegister<ValidateHomeForm>;
     errors: any;
 }
 
-export function RegisterInputs({ register, errors }: LoginProps) {
+export function RegisterInputs({ register, errors }: RegisterProps) {
     return (
         <>
             <div className='flex justify-center items-center gap-x-2'>

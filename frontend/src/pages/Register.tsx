@@ -38,7 +38,7 @@ export function Register() {
         resolver: zodResolver(validateHomeFormSchema)
     })
 
-    async function loginData() {
+    async function registerData() {
         setLoading(true)
 
         const formData = {
@@ -91,7 +91,7 @@ export function Register() {
             <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
                 <form
                     className="space-y-6"
-                    onSubmit={handleSubmit(loginData)}
+                    onSubmit={handleSubmit(registerData)}
                 >
                     <RegisterInputs
                         register={register}
