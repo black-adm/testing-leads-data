@@ -53,18 +53,25 @@ export async function createUser(request: FastifyRequest, reply: FastifyReply) {
 }
 
 export async function authUser(request: FastifyRequest, reply: FastifyReply) {
-  const { email, password }: User = request.body as User
-
   try {
-    const user = await prisma.user.findFirst({
-      where: {
-        email,
-      },
+    const { email, password }: User = request.body as User
+
+    if (!email || !password) {
+      reply.code(400).send({
+        success: false,
+        message: 'Credenciais inválidas!',
+      })
+      return
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { email },
     })
 
     if (!user) {
-      reply.code(404).send({
-        message: 'Usuário não existe no sistema!',
+      reply.code(401).send({
+        success: false,
+        message: 'Credenciais inválidas',
       })
       return
     }
@@ -72,19 +79,27 @@ export async function authUser(request: FastifyRequest, reply: FastifyReply) {
     const validatePassword = await confirmPassword(password, user.password)
 
     if (!validatePassword) {
-      reply.code(500).send({
-        message: 'Senha inválida!',
+      reply.code(401).send({
+        success: false,
+        message: 'Credenciais inválidas',
       })
       return
     }
 
+    const token = app.jwt.sign({
+      user,
+    })
+
     reply.code(200).send({
       success: true,
+      message: 'Login bem-sucedido',
+      data: { token },
     })
   } catch (error) {
-    reply.code(403).send({
+    console.error('Erro ao autenticar usuário:', error)
+    reply.code(500).send({
       success: false,
-      message: 'Usuário ou dados de acesso inválido!',
+      message: 'Erro ao autenticar usuário',
     })
   }
 }

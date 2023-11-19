@@ -10,7 +10,7 @@ import {
 export async function leadsRoutes(app: FastifyInstance) {
   app.get('/', getAllLeads)
   app.get('/:id', getLeadById)
-  app.post('/', createLead)
-  app.put('/:id', editLead)
-  app.delete('/:id', deleteLead)
+  app.post('/create', createLead)
+  app.put('/edit/:id', editLead)
+  app.delete('/delete/:id', deleteLead)
 }
