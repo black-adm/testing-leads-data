@@ -7,9 +7,6 @@ import { app } from '../../../app'
 export async function createUser(request: FastifyRequest, reply: FastifyReply) {
   try {
     const user: User = request.body as User
-    const token = app.jwt.sign({
-      user,
-    })
 
     if (!user) {
       reply.code(400).send({
@@ -41,7 +38,7 @@ export async function createUser(request: FastifyRequest, reply: FastifyReply) {
     reply.code(201).send({
       sucess: true,
       message: 'Usuário criado com sucesso!',
-      data: { create, token },
+      data: { create },
     })
   } catch (error) {
     console.error('Erro ao criar usuário:', error)
@@ -93,7 +90,7 @@ export async function authUser(request: FastifyRequest, reply: FastifyReply) {
     reply.code(200).send({
       success: true,
       message: 'Login bem-sucedido',
-      data: { token },
+      token: { token },
     })
   } catch (error) {
     console.error('Erro ao autenticar usuário:', error)
