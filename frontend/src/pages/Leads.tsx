@@ -16,7 +16,7 @@ export function Leads() {
                         </h4>
 
                         <Link
-                            to="/cadastrar"
+                            to="/leads/criar"
                             className="text-sm font-semibold leading-6 text-sky-500 hover:underline hover:text-sky-400"
                         >
                             criar novo <span aria-hidden="true">+</span>

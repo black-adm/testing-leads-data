@@ -16,7 +16,7 @@ export function UserSection() {
                     <button
                         type="button"
                         title="logout"
-                        className="p-[2px] ml-1 inline-flex items-center justify-center bg-red-200 hover:bg-red-400 rounded-full"
+                        className="p-[2px] ml-1 inline-flex items-center justify-center bg-indigo-200 hover:bg-violet-300 rounded-full"
                     >
                         <svg
                             className="w-4 h-4"

@@ -1,8 +1,8 @@
-import { useData } from "../../hooks/useData";
+import { useCreateLead } from "../../hooks/useCreateLead";
 import { Actions } from "./Actions";
 
 export function TableBody() {
-    const { leads } = useData();
+    const { leads } = useCreateLead();
 
     return (
         <>
