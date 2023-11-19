@@ -1,4 +1,4 @@
-import { MultiStep } from "../components/Form/MultiStep"
+import { MultiStep } from "./components/MultiStep"
 
 export function Form() {
     return (

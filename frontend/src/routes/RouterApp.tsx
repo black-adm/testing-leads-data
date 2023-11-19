@@ -6,7 +6,7 @@ import {
 
 import { Login } from "../pages/Login";
 import { Register } from "../pages/Register";
-import { Form } from "../pages/Form";
+import { Form } from "../pages/form/Form";
 import { Leads } from "../pages/Leads"
 
 export function RouterApp() {

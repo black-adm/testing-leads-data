@@ -1,57 +1,35 @@
-import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import { api } from '../../api';
+import { api } from '../../../api';
+import { ValidateLeadForm, validateLeadForm } from '../validations/ValidateLeadForm';
+import { useFormLead } from '../../../hooks/useFormLead';
+
 import { PersonalInput } from './PersonalInput';
 import { AddressInput } from './AddressInput';
 import { DetailsInput } from './DetailsInput';
-import { FormButton } from './FormButton';
+import { Button } from './Button';
 import { BadgeInfo } from 'lucide-react';
 
-export type ValidateInputForm = z.infer<typeof validateInputFormSchema>
-
-const validateInputFormSchema = z.object({
-    companyName: z.string()
-        .nonempty('O campo de senha é obrigatório!')
-        .min(6, 'A senha precisa de no mínimo 6 caracteres.'),
-    cep: z.string()
-        .nonempty('O campo de cep é obrigatório!'),
-    address: z.string()
-        .nonempty('O campo de endereço é obrigatório!'),
-    email: z.string().email()
-        .nonempty('O campo de e-mail é obrigatório!')
-        .email('Formato de e-mail inválido!'),
-    phone: z.string()
-        .nonempty('O campo de telefone é obrigatório!'),
-    contact: z.string()
-        .nonempty('O campo de contato é obrigatório!'),
-    message: z.string()
-})
-
 export function MultiStep() {
-    const [step, setStep] = useState<number>(1);
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState('')
-    const navigate = useNavigate()
-
-    function nextStep() {
-        setStep((prevStep) => prevStep + 1);
-    };
-
-    function previewStep() {
-        setStep((prevStep) => prevStep - 1);
-    };
+    const {
+        step,
+        loading,
+        error,
+        navigate,
+        nextStep,
+        previewStep,
+        setLoading,
+        setError
+    } = useFormLead();
 
     const {
         handleSubmit,
         register,
         watch,
         formState: { errors },
-    } = useForm<ValidateInputForm>({
-        resolver: zodResolver(validateInputFormSchema)
+    } = useForm<ValidateLeadForm>({
+        resolver: zodResolver(validateLeadForm)
     })
 
     async function sendData() {
@@ -105,7 +83,7 @@ export function MultiStep() {
                     >
                         próximo »
                     </button>}
-                {step === 3 && <FormButton loading={loading} />}
+                {step === 3 && <Button loading={loading} />}
             </div>
 
             {error && (

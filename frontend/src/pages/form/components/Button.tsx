@@ -1,6 +1,6 @@
 import { CheckCheck, Loader } from "lucide-react";
 
-export function FormButton({ loading }: any) {
+export function Button({ loading }: any) {
     return (
         <button
             type="submit"

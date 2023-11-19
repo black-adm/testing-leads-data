@@ -1,6 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
-import { ValidateInputForm } from "../../pages/Form";
 import { BadgeInfo, Map, MapPin } from "lucide-react";
+import { ValidateInputForm } from "./MultiStep";
 
 interface InputsProps {
     register: UseFormRegister<ValidateInputForm>;
