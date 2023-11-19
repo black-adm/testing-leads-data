@@ -39,9 +39,8 @@ As rotas do frontend são **/leads** para visualizar as tabelas, **/cadastrar** 
 
 `http://localhost:3333/leads/delete/:id` - DELETE : para deletar um lead por ID. 
 
-Imaginei o projeto com o seguinte diagrama :
+### Imaginei o projeto com o seguinte diagrama :
 
 <img src="https://i.ibb.co/z83B6BB/Captura-de-tela-de-2023-11-16-14-09-28.png" />
 
-
-A idéia era centralizar todo o fluxo dentro de uma aplicação Web onde o usuário se identificaria com o email e o setor "comercial" ou "prospect", acessando assim a página de criação de leads e as tabelas dos leads já criados para entrar em contato e alinhar a call com o cliente.
+A idéia é centralizar todo o fluxo de contato dentro de uma aplicação Web, onde os usuários se identificaria com o email e senha. Usuários de dois setores diferentes "comercial" ou "prospect", acessando assim a página de criação de leads e as tabelas dos leads já criados para entrar em contato e alinhar a call com o cliente.
