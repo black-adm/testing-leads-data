@@ -3,7 +3,6 @@ import { prisma } from '../../../database/client'
 import { User } from '../../../entities/user'
 import { confirmPassword, hashPassword } from './hash-password-service'
 import { app } from '../../../app'
-import { getTokenService } from './get-token-service'
 
 export async function createUser(request: FastifyRequest, reply: FastifyReply) {
   try {
@@ -79,11 +78,8 @@ export async function authUser(request: FastifyRequest, reply: FastifyReply) {
       return
     }
 
-    const token = await getTokenService
-
     reply.code(200).send({
       success: true,
-      data: token,
     })
   } catch (error) {
     reply.code(403).send({
