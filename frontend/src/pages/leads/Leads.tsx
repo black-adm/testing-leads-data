@@ -1,6 +1,6 @@
-import { UserSection } from "../components/Leads/UserSection";
-import { Pagination } from "../components/Leads/Pagination";
-import { TableBody } from "../components/Leads/TableBody";
+import { UserSection } from "../../components/Leads/UserSection";
+import { Pagination } from "../../components/Leads/Pagination";
+import { TableBody } from "../../components/Leads/TableBody";
 import { Link } from "react-router-dom";
 
 export function Leads() {

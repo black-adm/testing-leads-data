@@ -1,5 +1,5 @@
 import { UseFormRegister } from 'react-hook-form';
-import { ValidateHomeForm } from '../../pages/Register';
+import { ValidateHomeForm } from '../../pages/register/Register';
 import { BadgeInfo } from 'lucide-react';
 
 interface RegisterProps {

@@ -5,9 +5,9 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 
-import { api } from "../api"
-import { RegisterInputs } from "../components/Register/RegisterInputs";
-import { RegisterButton } from "../components/Register/RegisterButton";
+import { api } from "../../api"
+import { RegisterInputs } from "../../components/Register/RegisterInputs";
+import { RegisterButton } from "../../components/Register/RegisterButton";
 import { BadgeInfo } from "lucide-react";
 
 export type ValidateHomeForm = z.infer<typeof validateHomeFormSchema>

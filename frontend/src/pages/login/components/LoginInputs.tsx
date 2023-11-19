@@ -1,5 +1,5 @@
 import { UseFormRegister } from "react-hook-form";
-import { ValidateLoginForm } from "../../pages/Login";
+import { ValidateLoginForm } from "..";
 import { BadgeInfo } from "lucide-react";
 
 interface LoginProps {

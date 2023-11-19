@@ -1,6 +1,6 @@
 import { Loader } from "lucide-react";
 
-export function LoginButton({ loading }: any) {
+export function Button({ loading }: any) {
     return (
         <div>
             <button
