@@ -16,16 +16,28 @@ Com a api rodando, abra outro terminal e acesse a pasta `frontend`, digite `npm 
 As rotas do frontend são **/leads** para visualizar as tabelas, **/cadastrar** para o formulário de criação de leads e a rota raiz **/** é para acessar a tela de criação do usuário e login, se ele é do time comercial ou do time de prospecção.
 <br>
 
-O backend está finalizado e funcionando totalmente, as rotas são :
-<br>
+### O backend está finalizado e funcionando totalmente, as rotas são :
 
-*http://localhost:3333/leads/user* - POST: para criar um usuário, deve conter os campos :
-*email* e *role*
+#### Rotas de usuário
 
-*http://localhost:3333/leads* - POST: para criar um lead, deve conter os campos :
-*companyName*, *cep*, *address*, *email*, *phone*, *contact* e o campo opicional *message*
+`http://localhost:3333/user/register` - POST: para criar um usuário, deve conter os campos :
+*firstName*, *lastName*, *email*, *password* e *role*.
 
-*http://localhost:3333/leads* - GET : para listar todos os leads 
+`http://localhost:3333/user/login` - POST: para logar um usuário, deve conter os campos :
+*email* e *password*.
+
+#### Rotas de leads
+
+`http://localhost:3333/leads/create` - POST: para criar um lead, deve conter os campos :
+*companyName*, *cep*, *address*, *email*, *phone*, *contact* e o campo opicional *message* se caso desejar deixar uma mensagem. O campo **status** vem por default como *waiting*, que significa que o lead ainda não entrou em contato para marcar uma call. Assim que ele retornar, pode ser editado o valor no sistema como *reject* ou *accepted* de acordo com a resposta.
+
+`http://localhost:3333/leads` - GET : para listar todos os leads.
+
+`http://localhost:3333/leads/:id` - GET : para buscar um único lead por ID.
+
+`http://localhost:3333/leads/edit/:id` - PUT : para editar um lead por ID, você pode editar todos os campos ou apenas os que preferir. Aqui é possível mudar o status do lead como citado acima.
+
+`http://localhost:3333/leads/delete/:id` - DELETE : para deletar um lead por ID. 
 
 Imaginei o projeto com o seguinte diagrama :
 
