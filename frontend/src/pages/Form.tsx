@@ -1,11 +1,13 @@
-import { useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod"
 import { useState } from "react"
-import { api } from "../api"
-import { Button } from "../components/Form/Button"
-import { Inputs } from "../components/Form/Inputs"
+import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
+
+import { api } from "../api"
+import { FormInputs } from "../components/Form/FormInputs"
+import { FormButton } from "../components/Form/FormButton"
+import { BadgeInfo } from "lucide-react"
 
 export type ValidateInputForm = z.infer<typeof validateInputFormSchema>
 
@@ -54,7 +56,7 @@ export function Form() {
             message: watch('message')
         };
 
-        api.post("leads", formData)
+        api.post("/leads/create", formData)
             .then((response) => {
                 console.log(response.data);
                 navigate("/admin")
@@ -72,22 +74,22 @@ export function Form() {
         <div className="flex items-center justify-center p-12">
             <div className="mx-auto w-full max-w-[550px]">
                 <form onSubmit={handleSubmit(sendData)}>
-                    <Inputs
+                    <FormInputs
                         register={register}
                         errors={errors}
                     />
 
                     {error && (
                         <div className="flex flex-col pt-2 pl-3">
-                            <p className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-1 lucide lucide-alert-triangle"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" /><path d="M12 9v4" /><path d="M12 17h.01" /></svg>
+                            <p className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                                <BadgeInfo className='h-4 w-4' />
                                 {error.message}
                             </p>
                         </div>
                     )}
 
                     <div>
-                        <Button
+                        <FormButton
                             loading={loading}
                         />
                     </div>

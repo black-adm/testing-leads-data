@@ -1,12 +1,13 @@
 import { UseFormRegister } from 'react-hook-form';
 import { ValidateInputForm } from '../../pages/Form';
+import { BadgeInfo } from 'lucide-react';
 
 interface InputsProps {
     register: UseFormRegister<ValidateInputForm>;
     errors: any;
 }
 
-export function Inputs({ register, errors }: InputsProps) {
+export function FormInputs({ register, errors }: InputsProps) {
     return (
         <>
             <div className="mb-5">
@@ -26,8 +27,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.companyName &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.email.companyName}
                 </span>
             }
@@ -48,8 +49,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.cep &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.cep.message}
                 </span>
             }
@@ -70,8 +71,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.address &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.address.message}
                 </span>
             }
@@ -92,8 +93,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.email &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.email.message}
                 </span>
             }
@@ -114,8 +115,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.phone &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.phone.message}
                 </span>
             }
@@ -136,8 +137,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.contact &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.contact.message}
                 </span>
             }
@@ -159,8 +160,8 @@ export function Inputs({ register, errors }: InputsProps) {
                 />
             </div>
             {errors.message &&
-                <span className="flex items-center gap-x-[2px] text-xs font-medium tracking-tight text-primary-red">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield-alert"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" /><path d="M12 8v4" /><path d="M12 16h.01" /></svg>
+                <span className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
+                    <BadgeInfo className='h-4 w-4' />
                     {errors.message.message}
                 </span>
             }
