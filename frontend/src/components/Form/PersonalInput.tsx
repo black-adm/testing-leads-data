@@ -1,6 +1,6 @@
-import { BadgeInfo } from "lucide-react";
 import { UseFormRegister } from "react-hook-form";
-import { ValidateInputForm } from "../../pages/Form";
+import { ValidateInputForm } from "./MultiStep";
+import { AtSign, BadgeInfo, Building, Phone } from "lucide-react";
 
 interface InputsProps {
     register: UseFormRegister<ValidateInputForm>;
@@ -13,8 +13,9 @@ export function PersonalInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="company-name"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <Building className="h-5 w-5" />
                     Nome da empresa
                 </label>
                 <input
@@ -37,8 +38,9 @@ export function PersonalInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="email"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <AtSign className="h-5 w-5" />
                     Email
                 </label>
                 <input
@@ -60,8 +62,9 @@ export function PersonalInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="phone"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <Phone className="h-5 w-5" />
                     Telefone
                 </label>
                 <input

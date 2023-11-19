@@ -1,6 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
 import { ValidateInputForm } from "../../pages/Form";
-import { BadgeInfo } from "lucide-react";
+import { BadgeInfo, Map, MapPin } from "lucide-react";
 
 interface InputsProps {
     register: UseFormRegister<ValidateInputForm>;
@@ -13,8 +13,9 @@ export function AddressInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="cep"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <Map className="h-5 w-5" />
                     Cep
                 </label>
                 <input
@@ -37,8 +38,9 @@ export function AddressInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="address"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <MapPin className="h-5 w-5" />
                     Endereço
                 </label>
                 <input

@@ -1,6 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
 import { ValidateInputForm } from "./MultiStep";
-import { BadgeInfo } from "lucide-react";
+import { BadgeInfo, Info, Mailbox } from "lucide-react";
 
 interface InputsProps {
     register: UseFormRegister<ValidateInputForm>;
@@ -13,8 +13,9 @@ export function DetailsInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="contact"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <Info className="h-5 w-5" />
                     Outras informações de contato
                 </label>
                 <input
@@ -36,10 +37,12 @@ export function DetailsInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="message"
-                    className="mb-3 block text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
                 >
+                    <Mailbox className="h-5 w-5" />
                     Mensagem ( opicional )
                 </label>
+
                 <textarea
                     rows={4}
                     maxLength={150}

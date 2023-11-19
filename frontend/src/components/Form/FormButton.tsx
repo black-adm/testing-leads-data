@@ -1,4 +1,4 @@
-import { Loader } from "lucide-react";
+import { CheckCheck, Loader } from "lucide-react";
 
 export function FormButton({ loading }: any) {
     return (
@@ -16,8 +16,9 @@ export function FormButton({ loading }: any) {
                 />
             </>
             ) : (
-                <span>
-                    Cadastrar lead
+                <span className="flex items-center justify-center gap-x-2">
+                    cadastrar
+                    <CheckCheck className="h-4 w-4" />
                 </span>
             )}
         </button>

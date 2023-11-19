@@ -94,7 +94,7 @@ export function MultiStep() {
                         className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-base font-semibold text-white outline-none'
                         onClick={previewStep}
                     >
-                        Voltar
+                        « voltar
                     </button>
                 }
                 {step < 3 &&
@@ -103,7 +103,7 @@ export function MultiStep() {
                         className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-base font-semibold text-white outline-none'
                         onClick={nextStep}
                     >
-                        Próximo
+                        próximo »
                     </button>}
                 {step === 3 && <FormButton loading={loading} />}
             </div>
