@@ -1,8 +1,14 @@
 import { Loader } from "lucide-react";
 
-export function Button({ loading }: any) {
+type LoadingButton = {
+    loading?: boolean
+    loadingTitle?: string
+    title: string
+}
+
+export function Button({ loading, loadingTitle, title }: LoadingButton) {
     return (
-        <div>
+        <>
             <button
                 type="submit"
                 className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
@@ -10,15 +16,16 @@ export function Button({ loading }: any) {
                 disabled={loading}
             >
                 {loading ? (
-                    <>
+                    <div className="flex items-center justify-center gap-x-3">
+                        <span>{loadingTitle}</span>
                         <Loader
-                            className="inline-flex ml-3 animate-spin w-4 h-4 text-white"
+                            className="animate-spin w-4 h-4 text-white"
                         />
-                    </>
+                    </div>
                 ) : (
-                    <span>Entrar</span>
+                    <span>{title}</span>
                 )}
             </button>
-        </div>
+        </>
     )
 }

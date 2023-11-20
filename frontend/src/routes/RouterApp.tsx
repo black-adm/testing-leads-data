@@ -4,10 +4,10 @@ import {
     Route
 } from "react-router-dom";
 
-import { Register } from "../pages/register/Register";
-import { Leads } from "../pages/leads/Leads"
 import Login from "../pages/login";
+import Register from "../pages/register";
 import Form from "../pages/form-leads";
+import Leads from "../pages/leads";
 
 export function RouterApp() {
     return (

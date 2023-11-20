@@ -1,9 +1,9 @@
-import { UserSection } from "../../components/Leads/UserSection";
-import { Pagination } from "../../components/Leads/Pagination";
-import { TableBody } from "../../components/Leads/TableBody";
+import { UserSection } from "./components/UserSection";
+import { Pagination } from "./components/Pagination";
+import { TableBody } from "./components/TableBody";
 import { Link } from "react-router-dom";
 
-export function Leads() {
+export default function Leads() {
     return (
         <div>
             <div className="mx-auto pt-12">

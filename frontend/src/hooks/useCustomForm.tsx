@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export function useFormLead() {
+export function useCustomForm() {
     const [step, setStep] = useState<number>(1);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const [error, setError] = useState<{ message: string } | null>(null);
     const navigate = useNavigate();
 
     function nextStep() {

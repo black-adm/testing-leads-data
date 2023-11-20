@@ -4,7 +4,7 @@ import { UserCircle } from "lucide-react";
 export function UserSection() {
     const token = localStorage.getItem('token')
 
-    if(!token) throw new Error('Token not found as user!')
+    if (!token) throw new Error('Token not found as user!')
 
     const decoded = jwtDecode(token)
     console.log(decoded)

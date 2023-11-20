@@ -1,4 +1,4 @@
-import { useCreateLead } from "../../hooks/useCreateLead";
+import { useCreateLead } from "../../../hooks/useCreateLead";
 import { Actions } from "./Actions";
 
 export function TableBody() {

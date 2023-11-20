@@ -3,13 +3,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import { api } from '../../../api';
 import { ValidateLeadForm, validateLeadForm } from '../validations/ValidateLeadForm';
-import { useFormLead } from '../../../hooks/useFormLead';
+import { useCustomForm } from '../../../hooks/useCustomForm';
 
 import { PersonalInput } from './PersonalInput';
 import { AddressInput } from './AddressInput';
 import { DetailsInput } from './DetailsInput';
-import { Button } from './Button';
-import { BadgeInfo } from 'lucide-react';
+import { Button } from '../../../components/Button';
+import { ErrorMessage } from '../../../components/ErrorMessage';
 
 export function MultiStep() {
     const {
@@ -21,7 +21,7 @@ export function MultiStep() {
         previewStep,
         setLoading,
         setError
-    } = useFormLead();
+    } = useCustomForm();
 
     const {
         handleSubmit,
@@ -51,7 +51,7 @@ export function MultiStep() {
                 navigate("/admin")
             })
             .catch((error) => {
-                setError(error);
+                setError({ message: error.message });
                 console.error(error);
             })
             .finally(() => {
@@ -82,18 +82,11 @@ export function MultiStep() {
                         onClick={nextStep}
                     >
                         próximo »
-                    </button>}
-                {step === 3 && <Button loading={loading} />}
+                    </button>
+                }
+                {step === 3 && <Button loading={loading} loadingTitle='salvando lead' title='cadastrar' />}
             </div>
-
-            {error && (
-                <div className="flex flex-col pt-2 pl-3">
-                    <p className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
-                        <BadgeInfo className='h-4 w-4' />
-                        {error.message}
-                    </p>
-                </div>
-            )}
+            <ErrorMessage error={error || undefined} />
         </form>
 
     )

@@ -7,12 +7,12 @@ import { api } from "../../../api"
 import { ValidateLoginForm, validateLoginFormSchema } from "../validations/ValidateLoginForm"
 
 import { LoginInputs } from "./LoginInputs"
-import { Button } from "./Button"
-import { BadgeInfo } from "lucide-react"
+import { Button } from "../../../components/Button"
+import { ErrorMessage } from "../../../components/ErrorMessage"
 
 export function FormLogin() {
     const [loading, setLoading] = useState(false)
-    const [error, setError] = useState('')
+    const [error, setError] = useState<{ message: string } | null>(null);
     const navigate = useNavigate()
 
     const {
@@ -39,7 +39,7 @@ export function FormLogin() {
                 navigate("/leads")
             })
             .catch((error) => {
-                setError(error);
+                setError({ message: error.message });
                 console.error(error);
             })
             .finally(() => {
@@ -57,19 +57,13 @@ export function FormLogin() {
                     register={register}
                     errors={errors}
                 />
+                
                 <Button
-                    loadig={loading}
+                    loading={loading}
+                    title="entrar"
                 />
             </form>
-
-            {error && (
-                <div className="flex flex-col pt-2 pl-3">
-                    <p className="flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
-                        <BadgeInfo className='h-4 w-4' />
-                        {error.message}
-                    </p>
-                </div>
-            )}
+            <ErrorMessage error={error || undefined} />
 
             <p className="mt-10 text-center text-sm text-gray-500">
                 Não possui uma conta?{' '}

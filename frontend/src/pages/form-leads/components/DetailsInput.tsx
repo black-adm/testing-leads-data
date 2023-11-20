@@ -1,9 +1,9 @@
 import { UseFormRegister } from "react-hook-form";
-import { ValidateInputForm } from "./MultiStep";
+import { ValidateLeadForm } from "../validations/ValidateLeadForm";
 import { BadgeInfo, Info, Mailbox } from "lucide-react";
 
 interface InputsProps {
-    register: UseFormRegister<ValidateInputForm>;
+    register: UseFormRegister<ValidateLeadForm>;
     errors: any;
 }
 
