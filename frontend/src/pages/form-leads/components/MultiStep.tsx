@@ -70,7 +70,7 @@ export function MultiStep() {
                     {step > 1 &&
                         <button
                             type='button'
-                            className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-base font-semibold text-white outline-none'
+                            className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-xs md:text-base font-semibold text-white outline-none'
                             onClick={previewStep}
                         >
                             « voltar
@@ -79,13 +79,19 @@ export function MultiStep() {
                     {step < 3 &&
                         <button
                             type='button'
-                            className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-base font-semibold text-white outline-none'
+                            className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-xs md:text-base font-semibold text-white outline-none'
                             onClick={nextStep}
                         >
                             próximo »
                         </button>
                     }
-                    {step === 3 && <Button loading={loading} loadingTitle='salvando lead' title='cadastrar' />}
+                    {step === 3 &&
+                        <Button
+                            loading={loading}
+                            loadingTitle='salvando lead'
+                            title='cadastrar'
+                            className='hover:shadow-form rounded-md bg-[#6A64F1] w-full flex items-center justify-center py-3 px-8 text-xs md:text-base font-semibold text-white outline-none'
+                        />}
                 </div>
             </div>
             <ErrorMessage error={error || undefined} />

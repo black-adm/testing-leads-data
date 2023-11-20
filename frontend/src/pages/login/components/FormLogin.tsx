@@ -36,7 +36,7 @@ export function FormLogin() {
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                navigate("/leads")
+                navigate("/inicio")
             })
             .catch((error) => {
                 setError({ message: error.message });
@@ -57,8 +57,9 @@ export function FormLogin() {
                     register={register}
                     errors={errors}
                 />
-                
+
                 <Button
+                    className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                     loading={loading}
                     title="entrar"
                 />

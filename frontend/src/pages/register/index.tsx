@@ -45,7 +45,7 @@ export default function Register() {
         api.post("/user/register", formData)
             .then((response) => {
                 console.log(response.data);
-                navigate("/leads")
+                navigate("/inicio")
             })
             .catch((error) => {
                 setError({ message: error.message });
@@ -95,7 +95,12 @@ export default function Register() {
                                 próximo »
                             </button>
                         }
-                        {step === 2 && <Button loading={loading} loadingTitle='salvando lead' title='criar conta' />}
+                        {step === 2 &&
+                            <Button
+                                loading={loading}
+                                loadingTitle='salvando lead' title='criar conta'
+                                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                            />}
                     </div>
                     <ErrorMessage error={error || undefined} />
                 </form>

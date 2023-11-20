@@ -4,15 +4,15 @@ type LoadingButton = {
     loading?: boolean
     loadingTitle?: string
     title: string
+    className: string
 }
 
-export function Button({ loading, loadingTitle, title }: LoadingButton) {
+export function Button({ loading, loadingTitle, title, className }: LoadingButton) {
     return (
         <>
             <button
                 type="submit"
-                className={`flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                ${loading ? "opacity-50 cursor-not-allowed" : ""}`}
+                className={`${loading} ? "opacity-50 cursor-not-allowed" : "" ${className}`}
                 disabled={loading}
             >
                 {loading ? (

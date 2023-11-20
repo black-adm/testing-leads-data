@@ -1,5 +1,5 @@
 import { UseFormRegister } from "react-hook-form";
-import { ValidateLeadForm } from "../validations/ValidateLeadForm";
+import { ValidateLeadForm } from "../../../types/schemas/inputs-forms-schema";
 import { EmailInput } from "../../../components/EmailInput";
 import { BadgeInfo, Building, Phone } from "lucide-react";
 

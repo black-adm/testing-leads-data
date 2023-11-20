@@ -1,6 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
+import { ValidateLeadForm } from "../../../types/schemas/inputs-forms-schema";
 import { BadgeInfo, Map, MapPin } from "lucide-react";
-import { ValidateLeadForm } from "../validations/ValidateLeadForm";
 
 interface InputsProps {
     register: UseFormRegister<ValidateLeadForm>;
