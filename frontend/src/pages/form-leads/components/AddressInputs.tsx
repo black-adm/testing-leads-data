@@ -7,15 +7,15 @@ interface InputsProps {
     errors: any;
 }
 
-export function AddressInput({ register, errors }: InputsProps) {
+export function AddressInputs({ register, errors }: InputsProps) {
     return (
         <>
             <div className="mb-5">
                 <label
                     htmlFor="cep"
-                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-2 text-base font-medium text-[#07074D]"
                 >
-                    <Map className="h-5 w-5" />
+                    <Map className="h-4 w-4" />
                     Cep
                 </label>
                 <input
@@ -38,9 +38,9 @@ export function AddressInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="address"
-                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-2 text-base font-medium text-[#07074D]"
                 >
-                    <MapPin className="h-5 w-5" />
+                    <MapPin className="h-4 w-4" />
                     Endereço
                 </label>
                 <input

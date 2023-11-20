@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { zodResolver } from "@hookform/resolvers/zod"
 
 import { api } from "../../../api"
-import { ValidateLoginForm, validateLoginFormSchema } from "../validations/ValidateLoginForm"
+import { ValidateLoginForm, validateLoginFormSchema } from "../../../types/schemas/inputs-forms-schema"
 
 import { LoginInputs } from "./LoginInputs"
 import { Button } from "../../../components/Button"

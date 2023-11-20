@@ -3,13 +3,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import { api } from "../../api"
 import { useCustomForm } from "../../hooks/useCustomForm";
-import { ValidateRegisterForm, validateRegisterFormSchema } from "./validations/ValidateRegisterForm";
+import { ValidateRegisterForm, validateRegisterFormSchema } from "../../types/schemas/inputs-forms-schema";
 import { PersonInputs } from "./components/PersonInputs";
 import { RegisterInputs } from "./components/RegisterInputs";
 import { Button } from "../../components/Button";
 import { ErrorMessage } from "../../components/ErrorMessage";
 import { Lock } from "lucide-react";
-
 
 export default function Register() {
     const {

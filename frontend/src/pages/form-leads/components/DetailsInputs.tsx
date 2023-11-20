@@ -7,15 +7,15 @@ interface InputsProps {
     errors: any;
 }
 
-export function DetailsInput({ register, errors }: InputsProps) {
+export function DetailsInputs({ register, errors }: InputsProps) {
     return (
         <>
             <div className="mb-5">
                 <label
                     htmlFor="contact"
-                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-2 text-base font-medium text-[#07074D]"
                 >
-                    <Info className="h-5 w-5" />
+                    <Info className="h-4 w-4" />
                     Outras informações de contato
                 </label>
                 <input
@@ -37,9 +37,9 @@ export function DetailsInput({ register, errors }: InputsProps) {
             <div className="mb-5">
                 <label
                     htmlFor="message"
-                    className="mb-3 flex items-center gap-x-3 text-base font-medium text-[#07074D]"
+                    className="mb-3 flex items-center gap-x-2 text-base font-medium text-[#07074D]"
                 >
-                    <Mailbox className="h-5 w-5" />
+                    <Mailbox className="h-4 w-4" />
                     Mensagem ( opicional )
                 </label>
 

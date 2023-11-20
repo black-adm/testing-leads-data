@@ -1,6 +1,7 @@
 import { UseFormRegister } from "react-hook-form";
-import { ValidateLoginForm } from "../validations/ValidateLoginForm";
 import { BadgeInfo } from "lucide-react";
+import { EmailInput } from "../../../components/EmailInput";
+import { ValidateLoginForm } from "../../../types/schemas/inputs-forms-schema";
 
 interface LoginProps {
     register: UseFormRegister<ValidateLoginForm>;
@@ -10,29 +11,11 @@ interface LoginProps {
 export function LoginInputs({ register, errors }: LoginProps) {
     return (
         <>
-            <div>
-                <label
-                    htmlFor="email"
-                    className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                    Email
-                </label>
-                <div className="mt-2">
-                    <input
-                        type="email"
-                        autoComplete="email"
-                        placeholder="Digite seu e-mail"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        {...register('email')}
-                    />
-                </div>
-                {errors.email &&
-                    <span className="pt-2 flex items-center gap-x-1 text-xs font-medium tracking-tight text-primary-red">
-                        <BadgeInfo className='h-4 w-4' />
-                        {errors.email.message}
-                    </span>
-                }
-            </div>
+            <EmailInput
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                errors={errors}
+                register={register}
+            />
 
             <div>
                 <div className="flex items-center justify-between">
