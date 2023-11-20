@@ -12,8 +12,8 @@ import { Link } from "react-router-dom";
 export function Sidebar() {
     return (
         <>
-            <aside className="flex">
-                <div className="flex flex-col items-center w-16 h-screen py-8 space-y-8 bg-gray-50">
+            <aside className="flex border-r">
+                <div className="flex flex-col items-center w-full h-screen py-8 space-y-8 bg-gray-50">
                     <a href="#">
                         <img
                             className="w-auto h-6"
