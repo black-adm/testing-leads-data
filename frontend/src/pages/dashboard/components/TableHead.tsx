@@ -1,6 +1,6 @@
 export function TableHead() {
     return (
-        <thead className="bg-gray-50 text-indigo-500 font-medium">
+        <thead className="bg-gray-50 text-indigo-400 font-medium">
             <tr>
                 <th
                     scope="col"

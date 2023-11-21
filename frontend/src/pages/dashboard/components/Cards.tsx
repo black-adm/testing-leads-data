@@ -1,17 +1,23 @@
+import { useGetLeads } from "../../../hooks/useGetLeads";
+
 export function Cards() {
+    const { leads } = useGetLeads();
+
+    const totalLeads = leads.length
+
     return (
         <div className="mt-6 px-4 scroll scroll-smooth">
             <div className="grid grid-cols-1 gap-8 p-4 lg:grid-cols-2 xl:grid-cols-4">
 
-                <div className="bg-gray-50 border border-gray-200 flex items-center justify-between p-4 rounded-md">
+                <div className="bg-gray-50 border-[2.5px] border-indigo-400 flex items-center justify-between p-4 rounded-md">
                     <div>
-                        <h6 className="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
-                            total de
+                        <h6 className="pb-2 text-xs font-semibold leading-none tracking-wider text-indigo-400 uppercase">
+                            novos leads
                         </h6>
-                        <span className="text-xl font-semibold">Leads</span>
-                        <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            4.4%
+                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-emerald-600 bg-green-100 rounded-xl">
+                            + 1.3%
                         </span>
+                        <span className="text-xl font-semibold">{totalLeads}</span>
                     </div>
                     <div>
                         <span>
@@ -33,15 +39,15 @@ export function Cards() {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border-[3px] border-indigo-400 rounded-md">
+                <div className="bg-gray-50 border-[2.5px] border-indigo-400 flex items-center justify-between p-4 rounded-md">
                     <div>
-                        <h6 className="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase">
-                            Users
+                        <h6 className="pb-2 text-xs font-semibold leading-none tracking-wider text-indigo-400 uppercase">
+                            emails enviados
                         </h6>
-                        <span className="text-xl font-semibold">50,021</span>
-                        <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +2.6%
+                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-emerald-600 bg-green-100 rounded-xl">
+                            +4.6%
                         </span>
+                        <span className="text-xl font-semibold">12</span>
                     </div>
                     <div>
                         <span>
@@ -63,15 +69,15 @@ export function Cards() {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border-[3px] border-indigo-400 rounded-md">
+                <div className="bg-gray-50 border-[2.5px] border-indigo-400 flex items-center justify-between p-4 rounded-md">
                     <div>
-                        <h6 className="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
-                            Orders
+                        <h6 className="pb-2 text-xs font-semibold leading-none tracking-wider text-indigo-400 uppercase">
+                            reuniões aceitas
                         </h6>
-                        <span className="text-xl font-semibold">45,021</span>
-                        <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +3.1%
+                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-red-600 bg-red-100 rounded-xl">
+                            -2.1%
                         </span>
+                        <span className="text-xl font-semibold">3</span>
                     </div>
                     <div>
                         <span>
@@ -93,15 +99,15 @@ export function Cards() {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-between p-4 border-[3px] border-indigo-400 rounded-md">
+                <div className="bg-gray-50 border-[2.5px] border-indigo-400 flex items-center justify-between p-4 rounded-md">
                     <div>
-                        <h6 className="text-xs font-medium leading-none tracking-wider text-gray-500 uppercase dark:text-primary-light">
-                            Tickets
+                        <h6 className="pb-2 text-xs font-semibold leading-none tracking-wider text-indigo-400 uppercase">
+                            reuniões rejeitadas
                         </h6>
-                        <span className="text-xl font-semibold">20,516</span>
-                        <span className="inline-block px-2 py-px ml-2 text-xs text-green-500 bg-green-100 rounded-md">
-                            +3.1%
+                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-emerald-600 bg-green-100 rounded-xl">
+                            0.1%
                         </span>
+                        <span className="text-xl font-semibold">1</span>
                     </div>
                     <div>
                         <span>
@@ -116,13 +122,12 @@ export function Cards() {
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth={2}
-                                    d="M15 5v2m0 4v2m0 4v2M5 5a2 2 0 00-2 2v3a2 2 0 110 4v3a2 2 0 002 2h14a2 2 0 002-2v-3a2 2 0 110-4V7a2 2 0 00-2-2H5z"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
                                 />
                             </svg>
                         </span>
                     </div>
                 </div>
-
             </div>
         </div>
     )

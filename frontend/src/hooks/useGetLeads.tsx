@@ -2,13 +2,13 @@ import { Lead } from "../types/lead";
 import { useEffect, useState } from "react";
 import { api } from "../api";
 
-export function useCreateLead() {
+export function useGetLeads() {
   const [leads, setLeads] = useState<Lead[]>([]);
 
   useEffect(() => {
     let isMounted = true;
 
-    const createLead = async () => {
+    const getLeads = async () => {
       try {
         const response = await api.get("/leads");
 
@@ -20,7 +20,7 @@ export function useCreateLead() {
       }
     };
 
-    createLead();
+    getLeads();
     return () => {
       isMounted = false;
     };

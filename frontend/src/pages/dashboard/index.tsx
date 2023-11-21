@@ -17,7 +17,7 @@ export default function Dashboard() {
                     <Cards />
                     <div className="mt-10 px-6">
                         <div className="overflow-x-auto lg:overflow-hidden sm:rounded-md">
-                            <table className="min-w-full border border-gray-200 divide-indigo-300">
+                            <table className="min-w-full border-[2.5px] border-indigo-400 divide-indigo-300">
                                 <TableHead />
                                 <TableBody />
                             </table>

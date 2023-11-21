@@ -2,9 +2,16 @@ import { Crown } from "lucide-react";
 
 export function Header() {
     return (
-        <div className="bg-gray-50 flex items-center justify-between px-4 py-4 border-b lg:py-6">
-            <h1 className="text-lg sm:text-2xl font-semibold text-black">
-                Workspace
+        <div className="bg-gray-50 flex items-center justify-between px-4 py-4 border-b-[2.5px] lg:py-6">
+            <h1 className="flex items-center gap-x-4 text-lg sm:text-xl font-semibold text-black">
+                <span>
+                    <img
+                        className="rounded-full w-8 h-8"
+                        src="https://avatars.githubusercontent.com/u/68331373?v=4"
+                        alt=""
+                    />
+                </span>
+                Matheus Roberto
             </h1>
 
             <a
