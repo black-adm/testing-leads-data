@@ -9,7 +9,7 @@ export default function Login() {
                     src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                     alt="Your Company"
                 />
-                <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+                <h2 className="mt-6 text-center text-xl font-bold leading-8 tracking-tight text-gray-900">
                     Para continuar, <br />
                     acesse a sua conta
                 </h2>

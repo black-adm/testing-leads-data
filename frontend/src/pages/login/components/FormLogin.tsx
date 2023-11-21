@@ -36,7 +36,7 @@ export function FormLogin() {
             .then(response => {
                 const token = response.data.token;
                 localStorage.setItem('token', token);
-                navigate("/inicio")
+                navigate("/dashboard")
             })
             .catch((error) => {
                 setError({ message: error.message });

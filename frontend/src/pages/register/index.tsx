@@ -45,7 +45,7 @@ export default function Register() {
         api.post("/user/register", formData)
             .then((response) => {
                 console.log(response.data);
-                navigate("/inicio")
+                navigate("/dashboard")
             })
             .catch((error) => {
                 setError({ message: error.message });

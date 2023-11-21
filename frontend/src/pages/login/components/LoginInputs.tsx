@@ -1,5 +1,5 @@
 import { UseFormRegister } from "react-hook-form";
-import { BadgeInfo } from "lucide-react";
+import { BadgeInfo, KeyRound } from "lucide-react";
 import { EmailInput } from "../../../components/EmailInput";
 import { ValidateLoginForm } from "../../../types/schemas/inputs-forms-schema";
 
@@ -21,8 +21,9 @@ export function LoginInputs({ register, errors }: LoginProps) {
                 <div className="flex items-center justify-between">
                     <label
                         htmlFor="password"
-                        className="block text-sm font-medium leading-6 text-gray-900"
-                    >
+                        className="mb-3 flex items-center gap-x-2 text-base font-medium text-[#07074D]"
+                        >
+                        <KeyRound className="h-4 w-4" />
                         Senha
                     </label>
 
