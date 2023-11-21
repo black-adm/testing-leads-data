@@ -1,7 +1,7 @@
 import {
     Home,
     LayoutDashboard,
-    PackagePlus,
+    UserPlus2,
     Power,
     SendHorizonal,
     CalendarCheck,
@@ -53,18 +53,18 @@ export function Sidebar() {
                         </Link>
 
                         <Link
-                            to="#"
+                            to="/leads/criar"
                             title="criar lead"
                             className="p-1.5 text-indigo-500 transition-colors duration-200 hover:bg-indigo-200 rounded-lg"
                         >
-                            <PackagePlus
+                            <UserPlus2
                                 className="h-6 w-6"
                             />
                         </Link>
 
                         <Link
                             to="#"
-                            title="emails enviados"
+                            title="envios"
                             className="p-1.5 text-indigo-500 transition-colors duration-200 hover:bg-indigo-200 rounded-lg"
                         >
                             <SendHorizonal
@@ -74,7 +74,7 @@ export function Sidebar() {
 
                         <Link
                             to="#"
-                            title="calls marcadas"
+                            title="reuniões"
                             className="p-1.5 text-indigo-500 transition-colors duration-200 hover:bg-indigo-200 rounded-lg"
                         >
                             <CalendarCheck
@@ -84,7 +84,7 @@ export function Sidebar() {
 
                         <Link
                             to="#"
-                            title="reuniões agendadas"
+                            title="configurações"
                             className="p-1.5 text-indigo-500 transition-colors duration-200 hover:bg-indigo-200 rounded-lg"
                         >
                             <Settings
@@ -97,7 +97,7 @@ export function Sidebar() {
                     <div className="flex flex-col justify-end">
                         <Link
                             to="#"
-                            title="logout"
+                            title="sair"
                             className="p-1.5 text-indigo-500 transition-colors duration-200 hover:bg-indigo-200 rounded-lg"
                         >
                             <Power
