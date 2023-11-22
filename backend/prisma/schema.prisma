@@ -29,6 +29,8 @@ model Lead {
   companyName String   @unique
   cep         String
   address     String
+  state       String?
+  uf          String?
   email       String   @unique
   phone       String
   contact     String
