@@ -56,8 +56,8 @@ export function Cards() {
                         <h6 className="pb-2 text-xs font-semibold leading-none tracking-wider text-indigo-400 uppercase">
                             reuniões aceitas
                         </h6>
-                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-red-600 bg-red-100 rounded-xl">
-                            -2.1%
+                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-emerald-600 bg-green-100 rounded-xl">
+                            0.2%
                         </span>
                         <span className="text-xl font-semibold">{statusAccepted.length}</span>
                     </div>
@@ -76,7 +76,7 @@ export function Cards() {
                         <h6 className="pb-2 text-xs font-semibold leading-none tracking-wider text-indigo-400 uppercase">
                             reuniões rejeitadas
                         </h6>
-                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-yellow-600 bg-yellow-100 rounded-xl">
+                        <span className="inline-block px-2 py-px mr-6 font-semibold text-xs text-red-600 bg-red-100 rounded-xl">
                             0.1%
                         </span>
                         <span className="text-xl font-semibold">{statusReject.length}</span>

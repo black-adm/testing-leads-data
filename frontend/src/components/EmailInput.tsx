@@ -26,7 +26,7 @@ export function EmailInput({ className, errors, register }: EmailProps) {
                     <input
                         type="email"
                         autoComplete="email"
-                        placeholder="Digite seu e-mail"
+                        placeholder="digite seu e-mail"
                         className={`${className}`}
                         {...register('email')}
                     />

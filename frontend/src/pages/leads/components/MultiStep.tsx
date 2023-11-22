@@ -48,7 +48,7 @@ export function MultiStep() {
         api.post("/leads/create", formData)
             .then((response) => {
                 console.log(response.data);
-                navigate("/admin")
+                navigate("/dashboard")
             })
             .catch((error) => {
                 setError({ message: error.message });

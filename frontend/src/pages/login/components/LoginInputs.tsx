@@ -22,14 +22,14 @@ export function LoginInputs({ register, errors }: LoginProps) {
                     <label
                         htmlFor="password"
                         className="mb-3 flex items-center gap-x-2 text-base font-medium text-[#07074D]"
-                        >
+                    >
                         <KeyRound className="h-4 w-4" />
                         Senha
                     </label>
 
                 </div>
 
-                <div className="mt-2">
+                <div>
                     <input
                         type="password"
                         autoComplete="current-password"
