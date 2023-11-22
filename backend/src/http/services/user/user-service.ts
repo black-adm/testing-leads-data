@@ -90,7 +90,7 @@ export async function authUser(request: FastifyRequest, reply: FastifyReply) {
     reply.code(200).send({
       success: true,
       message: 'Login bem-sucedido',
-      token: { token },
+      token,
     })
   } catch (error) {
     console.error('Erro ao autenticar usuário:', error)
