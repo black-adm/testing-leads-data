@@ -78,7 +78,7 @@ export async function authUser(request: FastifyRequest, reply: FastifyReply) {
     if (!validatePassword) {
       reply.code(401).send({
         success: false,
-        message: 'Credenciais inválidas',
+        message: 'Senha inválida',
       })
       return
     }
